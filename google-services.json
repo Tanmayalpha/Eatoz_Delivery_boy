@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "692144165649",
+    "project_id": "eshop-multivendor",
+    "storage_bucket": "eshop-multivendor.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:692144165649:android:74b6811235835a9ba0b2b0",
+        "android_client_info": {
+          "package_name": "com.eatoz_food_delivery_boy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "692144165649-n5b7h7u5gaie9e5tptkj0ohq39grphg2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7F5pGTk1Yqwj5_ayYsVBcFtVyx29C0MM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "692144165649-n5b7h7u5gaie9e5tptkj0ohq39grphg2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:692144165649:android:f38e82cfc17ecabea0b2b0",
+        "android_client_info": {
+          "package_name": "wrteam.eshop.multivendor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "692144165649-n5b7h7u5gaie9e5tptkj0ohq39grphg2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7F5pGTk1Yqwj5_ayYsVBcFtVyx29C0MM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "692144165649-n5b7h7u5gaie9e5tptkj0ohq39grphg2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

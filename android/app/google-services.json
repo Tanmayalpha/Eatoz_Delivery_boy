@@ -1,0 +1,299 @@
+{
+  "project_info": {
+    "project_number": "1070373844309",
+    "firebase_url": "https://eatoz-5fe7f-default-rtdb.firebaseio.com",
+    "project_id": "eatoz-5fe7f",
+    "storage_bucket": "eatoz-5fe7f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070373844309:android:d34b792bc497d5494cebdc",
+        "android_client_info": {
+          "package_name": "com.eatoz.rider"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1070373844309-4bkst691hc6rs9uvufjis7pc21iobnnj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.eatoz.rider",
+            "certificate_hash": "6814993d4e363842c4f0fe275c34bb8e4538d3f2"
+          }
+        },
+        {
+          "client_id": "1070373844309-f5i2t6jvtp3gjdp3dfn1a3f1utvspq1c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.eatoz.rider",
+            "certificate_hash": "a276bf9f1cec5076240770dd0fc30c7535803fd4"
+          }
+        },
+        {
+          "client_id": "1070373844309-v3n4gj024cjer319j1jjll0glqfip545.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.eatoz.rider",
+            "certificate_hash": "cd9e6a3c030f0d64b609189db90468a82184124f"
+          }
+        },
+        {
+          "client_id": "1070373844309-ge4j29ntobcnrcel592ii8soq49psld9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA264Mvpx-xoQP8SZs0If4Q2hHNTfoEHek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1070373844309-2v3pkcmdh8eeqectfbfv8nnddn7vdv7i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1070373844309-c38higkl6bvsau8msjemndnk3dfrjq6h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "in.eatox.EatozCustomer"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070373844309:android:98523b3806e79c654cebdc",
+        "android_client_info": {
+          "package_name": "com.eatoz_food_delivery_boy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1070373844309-ge4j29ntobcnrcel592ii8soq49psld9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA264Mvpx-xoQP8SZs0If4Q2hHNTfoEHek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1070373844309-2v3pkcmdh8eeqectfbfv8nnddn7vdv7i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1070373844309-c38higkl6bvsau8msjemndnk3dfrjq6h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "in.eatox.EatozCustomer"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070373844309:android:bcc2c1f8d36002ff4cebdc",
+        "android_client_info": {
+          "package_name": "com.eatozfood.seller"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1070373844309-ge4j29ntobcnrcel592ii8soq49psld9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA264Mvpx-xoQP8SZs0If4Q2hHNTfoEHek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1070373844309-2v3pkcmdh8eeqectfbfv8nnddn7vdv7i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1070373844309-c38higkl6bvsau8msjemndnk3dfrjq6h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "in.eatox.EatozCustomer"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070373844309:android:f33b4a242f32b2d34cebdc",
+        "android_client_info": {
+          "package_name": "com.eatozfood_user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1070373844309-sefig7gk835a85tupdrdm0n86967b6lu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.eatozfood_user",
+            "certificate_hash": "35b6f887462150c31abf00621e793f4ab57448ab"
+          }
+        },
+        {
+          "client_id": "1070373844309-ge4j29ntobcnrcel592ii8soq49psld9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA264Mvpx-xoQP8SZs0If4Q2hHNTfoEHek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1070373844309-2v3pkcmdh8eeqectfbfv8nnddn7vdv7i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1070373844309-c38higkl6bvsau8msjemndnk3dfrjq6h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "in.eatox.EatozCustomer"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070373844309:android:db8ff965a86909204cebdc",
+        "android_client_info": {
+          "package_name": "in.eatoz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1070373844309-05qk0fhh43fre8u9i1speporq0se59er.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.eatoz",
+            "certificate_hash": "cd9e6a3c030f0d64b609189db90468a82184124f"
+          }
+        },
+        {
+          "client_id": "1070373844309-huhr3qhpds5rlr5ni0vjkttfoifrq8fd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.eatoz",
+            "certificate_hash": "a276bf9f1cec5076240770dd0fc30c7535803fd4"
+          }
+        },
+        {
+          "client_id": "1070373844309-pjc9itn0lol46ekdh2265e3jr3jqn0cf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.eatoz",
+            "certificate_hash": "6814993d4e363842c4f0fe275c34bb8e4538d3f2"
+          }
+        },
+        {
+          "client_id": "1070373844309-ge4j29ntobcnrcel592ii8soq49psld9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA264Mvpx-xoQP8SZs0If4Q2hHNTfoEHek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1070373844309-2v3pkcmdh8eeqectfbfv8nnddn7vdv7i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1070373844309-c38higkl6bvsau8msjemndnk3dfrjq6h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "in.eatox.EatozCustomer"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070373844309:android:1a40b38dbf8195624cebdc",
+        "android_client_info": {
+          "package_name": "in.eatoz.customer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1070373844309-2ggqv2c1f0i4ta4a4llqo6378grfpn5r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.eatoz.customer",
+            "certificate_hash": "a276bf9f1cec5076240770dd0fc30c7535803fd4"
+          }
+        },
+        {
+          "client_id": "1070373844309-5cbdnvf5qebgh4gc8hgf7f9iitka0i0h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.eatoz.customer",
+            "certificate_hash": "cd9e6a3c030f0d64b609189db90468a82184124f"
+          }
+        },
+        {
+          "client_id": "1070373844309-ge4j29ntobcnrcel592ii8soq49psld9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA264Mvpx-xoQP8SZs0If4Q2hHNTfoEHek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1070373844309-2v3pkcmdh8eeqectfbfv8nnddn7vdv7i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1070373844309-c38higkl6bvsau8msjemndnk3dfrjq6h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "in.eatox.EatozCustomer"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
