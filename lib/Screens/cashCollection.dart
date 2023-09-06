@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:deliveryboy_multivendor/Helper/color.dart';
 import 'package:deliveryboy_multivendor/Helper/constant.dart';
 import 'package:deliveryboy_multivendor/Helper/string.dart';
+import 'package:deliveryboy_multivendor/Screens/webView.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:http/http.dart' as http;
@@ -42,6 +44,8 @@ class _CashCollectionState extends State<CashCollection> {
   }
 
   TextEditingController amountController = TextEditingController();
+
+
   uploadMoney() async {
     DateTime dateTime = DateTime.now();
     print("checking date time here ${dateTime}");
@@ -111,6 +115,122 @@ class _CashCollectionState extends State<CashCollection> {
     _razorpay.clear(); //UNCOMMENT
   }
 
+
+  void initiatePayment(String url) async{
+    // Replace this with the actual PhonePe payment URL you have
+   // String phonePePaymentUrl = '${url}';
+   // String calBackurl = phonePePaymentUrl + 'Eatoz';
+   // print("call back url ${calBackurl}");
+    var data = await Navigator.push(context, CupertinoPageRoute(
+      builder: (context) {
+        return WebViewExample(
+          amount: amountController.text,
+            url: url);
+      },
+    ));
+    print("Payment Data${data}");
+  }
+
+
+  // _initiateCcAvenuePayment(double totalPrice) async {
+  //   // OrderModel model = OrderModel(listStatus: []);
+  //   // try {
+  //   //  // finalPrice = double.parse(amountController.text) * 100;
+  //   //   // final finalPrice = totalPrice.toString();
+  //   //   setState(() {
+  //   //     // _loading = true;
+  //   //     // errorText = "";
+  //   //   });
+  //   //   final response = await http.get(Uri.parse('${baseUrl}ccevenue_handler_wallet?amount=$finalPrice'));
+  //   //   // .post(Uri.parse(UrlList.merchant_server_enc_url),
+  //   //   // body: {"amount": amount});
+  //   //   // final json = jsonDecode(response.body);
+  //   //   // final data = PaymentData.fromJson(json);
+  //   //   final data = response.body;
+  //   //   var data1 =jsonDecode(data);
+  //   //   String url = data1["message"];
+  //   //   print('${response.body}_______dfkljd');
+  //   //   // if (data.statusMessage == "SUCCESS") {
+  //   //   initiatePayment(url);
+  //   //   setState(() {
+  //   //     // _loading = false;
+  //   //   });
+  //   //
+  //   // } catch (e) {
+  //   //   print(e.toString());
+  //   //   setState(() {
+  //   //     // _loading = false;
+  //   //   });
+  //   // }
+  //
+  //
+  // }
+
+  String? urlPath ;
+  _initiateCcAvenuePayment(double totalPrice) async {
+    // OrderModel model = OrderModel(listStatus: []);
+    // try {
+    //   // finalPrice = double.parse(amountController.text) * 100;
+    //   // final finalPrice = totalPrice.toString();
+    //   setState(() {
+    //     // _loading = true;
+    //     // errorText = "";
+    //   });
+    DateTime dateTime = DateTime.now();
+    var headers = {
+      'Cookie': 'ci_session=vtq04ncq941lian925u84bhsvjicbr66'
+    };
+    var request = http.MultipartRequest('POST', Uri.parse(
+        '${baseUrl}ccevenue_handler_wallet'));
+    request.fields.addAll({
+      //'amount': finalPrice.toString(),
+      'delivery_boy_id': '${CUR_USERID}',
+      'amount': amountController.text,
+      'date': dateTime.toString(),
+      'message': 'test'
+    });
+    print('_____request.fields______${request.fields}__________');
+
+    request.headers.addAll(headers);
+    http.StreamedResponse response = await request.send();
+    if (response.statusCode == 200) {
+      var result = await response.stream.bytesToString();
+      var finalResult = jsonDecode(result);
+      setState(() {
+        urlPath =  finalResult['message'];
+      });
+      print('____dddd_______${urlPath}__________');
+      initiatePayment(urlPath!);
+    }
+    else {
+      print(response.reasonPhrase);
+    }
+
+
+
+    //   final response = await http.get(Uri.parse('${baseUrl}/ccevenue_handler_wallet?amount=$finalPrice'));
+    //   // .post(Uri.parse(UrlList.merchant_server_enc_url),
+    //   // body: {"amount": amount});
+    //   // final json = jsonDecode(response.body);
+    //   // final data = PaymentData.fromJson(json);
+    //   final data = response.body;
+    //   var data1 =jsonDecode(data);
+    //   String url = data1["message"];
+    //   print('${response.body}_______dfkljd');
+    //   // if (data.statusMessage == "SUCCESS") {
+    //
+    //   setState(() {
+    //     // _loading = false;
+    //   });
+    //
+    // } catch (e) {
+    //   print(e.toString());
+    //   setState(() {
+    //     // _loading = false;
+    //   });
+    // }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -172,7 +292,8 @@ class _CashCollectionState extends State<CashCollection> {
                       if (amountController.text.isEmpty) {
                         setSnackbar("Amount is required");
                       } else {
-                        checkOut();
+                        _initiateCcAvenuePayment(double.parse(amountController.text));
+                        // checkOut();
                       }
                     },
                     child: Text(

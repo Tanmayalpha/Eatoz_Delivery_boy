@@ -128,6 +128,7 @@ class StateHome extends State<Home> with TickerProviderStateMixin {
         // loc.lng = position.longitude.toString();
         // loc.lat = position.latitude.toString();
         // callApi();
+        setLatLongApi(lat: latitude.toString(), long: longitude.toString(),city: placemark[0].locality.toString(), address:  currentAdress  );
       });
     }
   }
@@ -1192,6 +1193,25 @@ class StateHome extends State<Home> with TickerProviderStateMixin {
     }
   }
 
+  setLatLongApi({String? lat, String? long, String? city, String? address} ) async{
+    var headers = {
+      'Cookie': 'ci_session=f02741f77bb53eeaf1a6be0a045cb6f11b68f1a6'
+    };
+    var request =
+    http.MultipartRequest('POST', Uri.parse('${baseUrl}update_location'));
+    request.fields
+        .addAll({'address': address ?? '', 'city': city ??'', 'latitude': lat ?? '', 'longitude': long ?? '', 'user_id': '${CUR_USERID}'});
+    request.headers.addAll(headers);
+    http.StreamedResponse response = await request.send();
+
+    print('___________${request.fields}__________');
+    if (response.statusCode == 200) {
+      print(await response.stream.bytesToString());
+    } else {
+    print(response.reasonPhrase);
+    }
+  }
+
   setSnackbar(String msg) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(
@@ -1257,12 +1277,10 @@ class StateHome extends State<Home> with TickerProviderStateMixin {
                                     : model.itemList![0].status == "processed"
                                         ? Text("Preparing")
                                         : model.itemList![0].status == "" ? SizedBox() : Text(
-                                            capitalize(
-                                                model.itemList![0].status.toString()),
-                                            style:
-                                                const TextStyle(color: white),
+                                            capitalize(model.itemList![0].status.toString()),
+                                            style: const TextStyle(color: white),
                                           ),
-                              )
+                              ),
                             ],
                           ),
                         ),
@@ -1278,8 +1296,7 @@ class StateHome extends State<Home> with TickerProviderStateMixin {
                                     const Icon(Icons.person, size: 14),
                                     Expanded(
                                       child: Text(
-                                        model.name != null &&
-                                                model.name!.isNotEmpty
+                                        model.name != null && model.name!.isNotEmpty
                                             ? " ${capitalize(model.name!)}"
                                             : " ",
                                         maxLines: 1,
@@ -1320,8 +1337,7 @@ class StateHome extends State<Home> with TickerProviderStateMixin {
                               Row(
                                 children: [
                                   const Icon(Icons.money, size: 14),
-                                  Text(
-                                      " Payable: ${CUR_CURRENCY!} ${model.payable!}"),
+                                  Text("Payable: ${CUR_CURRENCY!} ${model.payable!}"),
                                 ],
                               ),
                               Spacer(),
@@ -1356,8 +1372,7 @@ class StateHome extends State<Home> with TickerProviderStateMixin {
                         ),
                         model.itemList?[0].status == 'canceled' ? SizedBox()  :   model.itemList![0].accept_reject_driver == "0" && model.itemList?[0].status != 'canceled' && model.itemList?[0].status != 'delivered'
                             ? Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   MaterialButton(
                                     minWidth:
