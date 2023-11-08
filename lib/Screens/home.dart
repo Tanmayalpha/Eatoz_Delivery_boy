@@ -520,7 +520,9 @@ class StateHome extends State<Home> with TickerProviderStateMixin {
                                       : orderList.length,
                                   physics: const NeverScrollableScrollPhysics(),
                                   itemBuilder: (context, index) {
+
                                     if (isCod == true) {
+
                                       return (index == orderList.length &&
                                               isLoadingmore)
                                           ? const Center(
@@ -1226,7 +1228,7 @@ class StateHome extends State<Home> with TickerProviderStateMixin {
 
   Widget orderItem(int index) {
     Order_Model model = orderList[index];
-    print('___________${model.itemList![0].accept_reject_driver}__________');
+    print('___________${model.itemList![0].status}__________');
     Color back;
 
     if ((model.itemList![0].status!) == DELIVERD)
@@ -1306,7 +1308,7 @@ class StateHome extends State<Home> with TickerProviderStateMixin {
                                   ],
                                 ),
                               ),
-                              InkWell(
+                              model.itemList?[0].status == 'delivered' ? SizedBox():  InkWell(
                                 child: Row(
                                   children: [
                                     const Icon(
@@ -1314,7 +1316,7 @@ class StateHome extends State<Home> with TickerProviderStateMixin {
                                       size: 14,
                                       color: fontColor,
                                     ),
-                                    Text(
+                                Text(
                                       " ${model.mobile!}",
                                       style: const TextStyle(
                                           color: fontColor,
@@ -1407,7 +1409,8 @@ class StateHome extends State<Home> with TickerProviderStateMixin {
                                   ),
                                 ],
                               )
-                            : model.itemList![0].accept_reject_driver == "1"
+                            :model.itemList?[0].status == 'delivered' ? SizedBox() :
+                        model.itemList![0].accept_reject_driver == "1"
                                 ? MaterialButton(
                                     onPressed: () {},
                                     child: Text(
