@@ -1026,7 +1026,7 @@ class StateOrder extends State<OrderDetail> with TickerProviderStateMixin {
                       const EdgeInsets.symmetric(horizontal: 15.0, vertical: 3),
                   child: Text(capitalize(widget.model!.address!),
                       style: const TextStyle(color: lightBlack2))),
-              InkWell(
+                  widget.model?.itemList?[0].status == 'delivered' ? SizedBox(): InkWell(
                   child: Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 15.0, vertical: 5),
@@ -1089,6 +1089,15 @@ class StateOrder extends State<OrderDetail> with TickerProviderStateMixin {
                           : Container(),
                     ],
                   )),
+              Padding( padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                  Text(widget.model!.itemList![0].storeName ?? '', style: TextStyle(fontWeight: FontWeight.bold),),
+                  Text(widget.model!.itemList![0].sellerAddress ?? ''),
+
+                ],),
+              ),
               const Divider(
                 color: lightBlack,
               ),

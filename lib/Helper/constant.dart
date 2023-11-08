@@ -1,4 +1,4 @@
-final String appName = 'Eatoz Food - Rider';
+final String appName = 'Eatoz Food Delivery App';
 
 final int timeOut = 50;
 const int perPage = 10;
@@ -122,9 +122,8 @@ final String somethingMSg =
     'Something went wrong. Please try again after some time';
 const String noNoti = 'No Notification Found..!!';
 
-// final String baseUrl = 'https://foodontheways.com/delivery_boy/app/v1/api/';
-//final String baseUrl = 'https://foodontheways.com/New_food/delivery_boy/app/v1/api/';
-final String baseUrl =
-    'https://eatoz.in/delivery_boy/app/v1/api/';
-final String imageUrl = 'https://eatoz.in/';
+final String baseUrl = "https://eatoz.in/delivery_boy/app/v1/api/";
+// final String baseUrl = "https://developmentalphawizz.com/eatoz/delivery_boy/app/v1/api/";
+
+final String imageUrl = 'https://eatoz.in/delivery_boy/';
 final String jwtKey = "0352e7a815f965e8e278d47976b8f9cf466e1f42";
