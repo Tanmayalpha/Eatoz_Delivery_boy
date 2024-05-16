@@ -49,7 +49,6 @@ class _CashCollectionState extends State<CashCollection> {
 
   TextEditingController amountController = TextEditingController();
 
-
   uploadMoney() async {
     DateTime dateTime = DateTime.now();
     print("checking date time here ${dateTime}");
@@ -64,7 +63,7 @@ class _CashCollectionState extends State<CashCollection> {
       'date': dateTime.toString(),
       'message': 'test'
     });
-    print('___________${request.fields}__________');
+    print('___________${request.fields}___jjj_______');
 
     request.headers.addAll(headers);
     http.StreamedResponse response = await request.send();
@@ -120,7 +119,6 @@ class _CashCollectionState extends State<CashCollection> {
     _razorpay.clear(); //UNCOMMENT
   }
 
-
   // void initiatePayment(String url) async{
   //   // Replace this with the actual PhonePe payment URL you have
   //  // String phonePePaymentUrl = '${url}';
@@ -136,9 +134,6 @@ class _CashCollectionState extends State<CashCollection> {
   //   print("Payment Data${data}");
   // }
 
-
-
-
   Future<void> initiatePayment() async {
     // Replace this with the actual PhonePe payment URL you have
     String phonePePaymentUrl = '${url}';
@@ -146,28 +141,25 @@ class _CashCollectionState extends State<CashCollection> {
     print("call back url ${calBackurl}");
     var data = await Navigator.push(context!, CupertinoPageRoute(
       builder: (context) {
-        return WebViewExample(
-            url: phonePePaymentUrl);
+        return WebViewExample(url: phonePePaymentUrl);
       },
     ));
     print("Payment Data$data");
-    if(data!=null){
-      http.post(Uri.parse("https://developmentalphawizz.com/eatoz/app/v1/api/check_phonepay_status"),body: {
-        "transaction_id": merchantTransactionId
-      }).then((value) {
+    if (data != null) {
+      http.post(Uri.parse("${baseUrl}check_phonepay_status"),
+          body: {"transaction_id": merchantTransactionId}).then((value) {
         print("Payment Data1${value.body}");
         Map response = jsonDecode(value.body);
-        if(response['data']!=null) {
+        if (response['data'] != null) {
           setSnackbar("${response['data'][0]["message"]}");
-          if ( response['data'][0]["error"]=="false"){
+          if (response['data'][0]["error"] == "false") {
             uploadMoney();
-          } else {
-          }
-        }else{
+          } else {}
+        } else {
           setSnackbar("Payment Failed or Cancelled");
         }
       });
-    }else{
+    } else {
       setSnackbar("Payment Failed or Cancelled");
     }
     /*  Navigator.push(
@@ -217,28 +209,26 @@ class _CashCollectionState extends State<CashCollection> {
 
   String? newStats;
   bool? paymentStatuss;
-  handelPhonePaySuccess(String url) async{
-    Map <String, dynamic> finalResult = await fetchPaymentStatus();
-    if(finalResult['data'][0]['error'] ==  'true'){
+  handelPhonePaySuccess(String url) async {
+    Map<String, dynamic> finalResult = await fetchPaymentStatus();
+    if (finalResult['data'][0]['error'] == 'true') {
       // newStats = false;
       Fluttertoast.showToast(msg: "Payment Failed");
-      paymentStatuss  = false ;
-    }
-    else{
-      paymentStatuss  = true ;
+      paymentStatuss = false;
+    } else {
+      paymentStatuss = true;
       Fluttertoast.showToast(msg: "Payment Success");
     }
   }
 
-  Future<Map <String, dynamic>> fetchPaymentStatus () async {
+  Future<Map<String, dynamic>> fetchPaymentStatus() async {
     var headers = {
       'Cookie': 'ci_session=2192e13e91c2acac91d03ed3ab66370064afc742'
     };
     print(url);
-    var request = http.MultipartRequest('POST', Uri.parse('https://developmentalphawizz.com/eatoz/app/v1/api/check_phonepay_status'));
-    request.fields.addAll({
-      'transaction_id': '${merchantTransactionId}'
-    });
+    var request = http.MultipartRequest(
+        'POST', Uri.parse('${baseUrl}check_phonepay_status'));
+    request.fields.addAll({'transaction_id': '${merchantTransactionId}'});
     print("check paymnet status ${request.fields}");
     request.headers.addAll(headers);
     http.StreamedResponse response = await request.send();
@@ -246,8 +236,7 @@ class _CashCollectionState extends State<CashCollection> {
       var Result = await response.stream.bytesToString();
       var finalResult = jsonDecode(Result);
       return finalResult;
-    }
-    else {
+    } else {
       var Result = await response.stream.bytesToString();
       var finalResult = jsonDecode(Result);
       return finalResult;
@@ -274,7 +263,8 @@ class _CashCollectionState extends State<CashCollection> {
     var headers = {
       'Cookie': 'ci_session=56691520ceefd28e91e4992a486249c971156c0d'
     };
-    var request = http.MultipartRequest('POST', Uri.parse('https://developmentalphawizz.com/eatoz/app/v1/api/initiate_phone_payment'));
+    var request = http.MultipartRequest(
+        'POST', Uri.parse('${baseUrl}initiate_phone_payment'));
     request.fields.addAll({
       'user_id': '$CUR_USERID',
       'mobile': '$mobile',
@@ -287,13 +277,14 @@ class _CashCollectionState extends State<CashCollection> {
       var result = await response.stream.bytesToString();
       print(result);
       var finalResult = jsonDecode(result);
-      url = finalResult['data']['data']['instrumentResponse']['redirectInfo']['url'];
+      url = finalResult['data']['data']['instrumentResponse']['redirectInfo']
+      ['url'];
       merchantId = finalResult['data']['data']['merchantId'];
-      merchantTransactionId = finalResult['data']['data']['merchantTransactionId'];
+      merchantTransactionId =
+      finalResult['data']['data']['merchantTransactionId'];
       print("merchante trancfags ${merchantTransactionId}");
       await initiatePayment();
-    }
-    else {
+    } else {
       print(response.reasonPhrase);
     }
   }
@@ -332,7 +323,7 @@ class _CashCollectionState extends State<CashCollection> {
   //
   // }
 
-  String? urlPath ;
+  String? urlPath;
   // _initiateCcAvenuePayment(double totalPrice) async {
   //   // OrderModel model = OrderModel(listStatus: []);
   //   // try {

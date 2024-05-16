@@ -7,6 +7,8 @@ import 'Helper/color.dart';
 import 'Helper/constant.dart';
 import 'Helper/push_notification_service.dart';
 import 'Screens/Splash/splash.dart';
+import 'dart:io' show Platform;
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,6 +30,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: appName,
+      builder: (context, child) {
+        return MediaQuery(data: MediaQuery.of(context).copyWith(textScaleFactor: Platform.isAndroid? 1 : 1.1), child: child!);
+      },
       theme: ThemeData(
         primarySwatch: primary_app,
         fontFamily: 'opensans',

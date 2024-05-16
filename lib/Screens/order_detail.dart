@@ -841,6 +841,7 @@ class StateOrder extends State<OrderDetail> with TickerProviderStateMixin {
     } else {
       url =
           "http://maps.apple.com/?saddr=&daddr=$lat,$lng&directionsmode=driving&dir_action=navigate";
+      //"http://maps.apple.com/?saddr=&daddr=37.758688,-122.412770&directionsmode=driving&dir_action=navigate";
     }
     await launch(url);
 /*    if (await canLaunch(url)) {

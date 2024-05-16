@@ -1,4 +1,4 @@
-final String appName = 'Eatoz Food Delivery App';
+final String appName = 'Eatoz Rider';
 
 final int timeOut = 50;
 const int perPage = 10;

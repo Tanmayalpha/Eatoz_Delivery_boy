@@ -169,7 +169,7 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
       if (widget.title == FORGOT_PASS_TITLE) {
         if (!error!) {
           int otp = getdata["data"]["otp"];
-          setSnackbar(otp.toString());
+          setSnackbar('OTP sent successfully');
           setPrefrence(MOBILE, mobile!);
           setPrefrence(COUNTRY_CODE, countrycode!);
 

@@ -1,20 +1,21 @@
 import 'constant.dart';
 
 final Uri getUserLoginApi = Uri.parse(baseUrl + 'login');
-final Uri getVerifyUserApi =Uri.parse(baseUrl + 'verify_user');
-final Uri getFundTransferApi =Uri.parse( baseUrl + 'get_fund_transfers');
-final Uri getNotificationApi =Uri.parse( baseUrl + 'get_notifications');
+final Uri getVerifyUserApi = Uri.parse(baseUrl + 'verify_user');
+final Uri getFundTransferApi = Uri.parse(baseUrl + 'get_fund_transfers');
+final Uri getNotificationApi = Uri.parse(baseUrl + 'get_notifications');
 final Uri updateFcmApi = Uri.parse(baseUrl + 'update_fcm');
-final Uri getBoyDetailApi =Uri.parse( baseUrl + 'get_delivery_boy_details');
-final Uri getUpdateUserApi =Uri.parse( baseUrl + 'update_user');
+final Uri getBoyDetailApi = Uri.parse(baseUrl + 'get_delivery_boy_details');
+final Uri getUpdateUserApi = Uri.parse(baseUrl + 'update_user');
 final Uri getSettingApi = Uri.parse(baseUrl + 'get_settings');
-final Uri getOrdersApi =Uri.parse( baseUrl + 'get_orders');
-final Uri getResetPassApi =Uri.parse( baseUrl + 'reset_password');
+final Uri getOrdersApi = Uri.parse(baseUrl + 'get_orders');
+final Uri getResetPassApi = Uri.parse(baseUrl + 'reset_password');
 final Uri updateOrderApi = Uri.parse(baseUrl + 'update_order_status');
 final Uri updateOrderItemApi = Uri.parse(baseUrl + 'update_order_item_status');
 final Uri sendWithReqApi = Uri.parse(baseUrl + 'send_withdrawal_request');
 final Uri getWithReqApi = Uri.parse(baseUrl + 'get_withdrawal_request');
 final Uri getTransactionApi = Uri.parse(baseUrl + 'get_transactions');
+final Uri getCashTransactionApi = Uri.parse(baseUrl + 'get_collection');
 
 const String USERNAME = 'username';
 const String ADDRESS = 'address';
@@ -59,9 +60,7 @@ const String QUANTITY = "quantity";
 const String PROMO_DIS = 'promo_discount';
 const String WAL_BAL = 'wallet_balance';
 
-
-
-const String IMGS='images[]';
+const String IMGS = 'images[]';
 const String NAME = 'name';
 const String SUBTITLE = 'subtitle';
 const String TAX = 'tax';
@@ -88,9 +87,8 @@ const String SORT = 'sort';
 const String PSORT = 'p_sort';
 
 const String PORDER = 'p_order';
-const String DEL_CHARGES='delivery_charges';
-const String FREE_AMT='minimum_free_delivery_order_amount';
-
+const String DEL_CHARGES = 'delivery_charges';
+const String FREE_AMT = 'minimum_free_delivery_order_amount';
 
 const String CONTACT_US = 'contact_us';
 const String ABOUT_US = 'about_us';
@@ -102,7 +100,7 @@ const String IDS = 'ids';
 const String VALUE = 'value';
 const String ATTRIBUTES = 'attributes';
 const String ATTRIBUTE_VALUE_ID = 'attribute_value_ids';
-const String IMAGES='images';
+const String IMAGES = 'images';
 const String NO_OF_RATE = 'no_of_ratings';
 const String ATTR_NAME = 'attr_name';
 const String VARIENT_VALUE = 'variant_values';
@@ -123,7 +121,6 @@ const String USERDATA = 'user_data';
 const String DATE_ADDED = 'date_added';
 
 const String TOP_RETAED = 'top_rated_product';
-
 
 const String USER_NAME = 'user_name';
 
@@ -149,7 +146,7 @@ const String CART_COUNT = 'cart_count';
 const String SUB_TOTAL = 'sub_total';
 const String TAX_AMT = 'tax_amount';
 const String TAX_PER = 'tax_percentage';
-const String CANCLE_TILL='cancelable_till';
+const String CANCLE_TILL = 'cancelable_till';
 const String ALT_MOBNO = 'alternate_mobile';
 const String STATE = 'state';
 const String COUNTRY = 'country';
@@ -177,7 +174,7 @@ const String SEC_ID = 'section_id';
 const String ATTR_VALUE = 'attr_value_ids';
 
 const String ORDER_ID = 'order_id';
-const String IS_SIMILAR='is_similar_products';
+const String IS_SIMILAR = 'is_similar_products';
 const String PLACED = 'received';
 const String SHIPED = 'shipped';
 const String PROCESSED = 'processed';
@@ -187,27 +184,25 @@ const String RETURNED = 'returned';
 const String ITEM_RETURN = 'Item Return';
 const String ITEM_CANCEL = 'Item Cancel';
 
-
-
 const String ADD_ID = 'address_id';
 const String STYLE = 'style';
-const String ORDERITEMID='order_item_id';
+const String ORDERITEMID = 'order_item_id';
 const String ORDERID = 'order_id';
-const String OTP="otp";
-const String DELIVERY_BOY_ID='delivery_boy_id';
+const String OTP = "otp";
+const String DELIVERY_BOY_ID = 'delivery_boy_id';
 const String ISALRCANCLE = 'is_already_cancelled';
 const String ISALRRETURN = 'is_already_returned';
 const String ISRTNREQSUBMITTED = 'return_request_submitted';
-const String OVERALL='overall_amount';
+const String OVERALL = 'overall_amount';
 const String AVAILABILITY = 'availability';
 const String MADEIN = 'made_in';
 const String INDICATOR = 'indicator';
-const String STOCKTYPE='stock_type';
-const String SAVE_LATER='is_saved_for_later';
-const String ATT_VAL='attribute_values';
-const String ATT_VAL_ID='attribute_values_id';
-const String FILTERS='filters';
-const String TOTALALOOW='total_allowed_quantity';
+const String STOCKTYPE = 'stock_type';
+const String SAVE_LATER = 'is_saved_for_later';
+const String ATT_VAL = 'attribute_values';
+const String ATT_VAL_ID = 'attribute_values_id';
+const String FILTERS = 'filters';
+const String TOTALALOOW = 'total_allowed_quantity';
 const String KEY = 'key';
 const String AMOUNT = 'amount';
 const String PAYMENT_ADD = 'payment_address';
@@ -217,17 +212,15 @@ const String TXNID = 'txn_id';
 const String SUCCESS = 'Success';
 const String ACTIVE_STATUS = 'active_status';
 const String WAITING = 'awaiting';
-const String DEL_DATE='delivery_date';
-const String DEL_TIME='delivery_time';
+const String DEL_DATE = 'delivery_date';
+const String DEL_TIME = 'delivery_time';
 
-
-final String isLogin='$appName+_islogin';
+final String isLogin = '$appName+_islogin';
 String? CUR_USERID = '';
 String? CUR_USERNAME = "";
 String CUR_BALANCE = '';
-String? CUR_BONUS=' ';
-String? CUR_CURRENCY=' ';
-
+String? CUR_BONUS = ' ';
+String? CUR_CURRENCY = ' ';
 
 late double deviceHeight;
 double? deviceWidth;

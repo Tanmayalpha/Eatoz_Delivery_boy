@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:deliveryboy_multivendor/Helper/Session.dart';
 import 'package:deliveryboy_multivendor/Helper/app_assets.dart';
 import 'package:deliveryboy_multivendor/Helper/app_btn.dart';
@@ -6,7 +7,6 @@ import 'package:deliveryboy_multivendor/Helper/color.dart';
 import 'package:deliveryboy_multivendor/Helper/constant.dart';
 import 'package:deliveryboy_multivendor/Helper/cropped_container.dart';
 import 'package:deliveryboy_multivendor/Helper/string.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -14,17 +14,18 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 import 'set_password.dart';
+import 'package:http/http.dart';
 
 class VerifyOtp extends StatefulWidget {
   final String? mobileNumber, countryCode, title;
   final otp;
-
+ bool? isSelected;
   VerifyOtp(
       {Key? key,
       required String this.mobileNumber,
       this.countryCode,
       this.title,
-      this.otp})
+      this.otp,this.isSelected})
       : super(key: key);
 
   @override
@@ -39,7 +40,7 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
   late String _verificationId;
   String signature = "";
   bool _isClickable = false;
-  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+//  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -93,7 +94,8 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
     if (avail) {
       if (_isClickable) {
         // _onVerifyCode();
-        getVerifyOtp();
+        //getVerifyOtp();
+        getVerifyUser();
       } else {
         setSnackbar(OTPWR);
       }
@@ -132,6 +134,7 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
 
   getVerifyOtp() async {
     if (widget.otp.toString() == otp.toString()) {
+
       await buttonController!.reverse();
       setSnackbar(OTPMSG);
       setPrefrence(MOBILE, mobile!);
@@ -154,7 +157,64 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
       await buttonController!.reverse();
     }
   }
+Future<void> getVerifyUser() async {
+    try {
+      var data = {MOBILE: mobile, "forgot_otp": "true"};
+      Response response =
+          await post(getVerifyUserApi, body: data, headers: headers)
+              .timeout(Duration(seconds: timeOut));
 
+      var getdata = json.decode(response.body);
+
+      bool? error = getdata["error"];
+      String? msg = getdata["message"];
+      await buttonController!.reverse();
+
+      if (widget.title == SEND_OTP_TITLE) {
+        if (!error!) {
+          setSnackbar(msg!);
+
+          setPrefrence(MOBILE, mobile!);
+          setPrefrence(COUNTRY_CODE, countrycode!);
+          Future.delayed(Duration(seconds: 1)).then((_) {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => VerifyOtp(
+                          mobileNumber: mobile!,
+                          countryCode: countrycode,
+                          title: SEND_OTP_TITLE,
+                        )));
+          });
+        } else {
+          setSnackbar(msg!);
+        }
+      }
+      if (widget.title == FORGOT_PASS_TITLE) {
+        if (!error!) {
+          int otp = getdata["data"]["otp"];
+          setSnackbar('OTP sent successfully');
+          setPrefrence(MOBILE, mobile!);
+          setPrefrence(COUNTRY_CODE, countrycode!);
+
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => VerifyOtp(
+                        mobileNumber: mobile!,
+                        otp: otp,
+                        countryCode: countrycode,
+                        title: FORGOT_PASS_TITLE,
+                      )));
+        } else {
+          setSnackbar(msg!);
+        }
+      }
+    } on TimeoutException catch (_) {
+      setSnackbar(somethingMSg);
+      await buttonController!.reverse();
+    }
+  }
   setSnackbar(String msg) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(
@@ -167,7 +227,7 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
     ));
   }
 
-  void _onVerifyCode() async {
+  /*void _onVerifyCode() async {
     setState(() {
       isCodeSent = true;
     });
@@ -225,9 +285,9 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
         verificationFailed: verificationFailed,
         codeSent: codeSent,
         codeAutoRetrievalTimeout: codeAutoRetrievalTimeout);
-  }
+  }*/
 
-  void _onFormSubmitted() async {
+  /*void _onFormSubmitted() async {
     String code = otp!.trim();
 
     if (code.length == 6) {
@@ -244,10 +304,10 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
           setPrefrence(MOBILE, mobile!);
           setPrefrence(COUNTRY_CODE, countrycode!);
           if (widget.title == SEND_OTP_TITLE) {
-            /*  Future.delayed(Duration(seconds: 2)).then((_) {
+            *//*  Future.delayed(Duration(seconds: 2)).then((_) {
               Navigator.pushReplacement(
                   context, MaterialPageRoute(builder: (context) => SignUp()));
-            });*/
+            });*//*
           } else if (widget.title == FORGOT_PASS_TITLE) {
             Future.delayed(Duration(seconds: 2)).then((_) {
               Navigator.pushReplacement(
@@ -268,7 +328,7 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
     } else {
       setSnackbar(ENTEROTP);
     }
-  }
+  }*/
 
   Future<Null> _playAnimation() async {
     try {
@@ -347,7 +407,7 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
         ),
         child: Center(
             child: PinFieldAutoFill(
-                decoration: const UnderlineDecoration(
+                decoration:  UnderlineDecoration(
                   textStyle: TextStyle(fontSize: 20, color: fontColor),
                   colorBuilder: FixedColorBuilder(primary),
                 ),
@@ -451,7 +511,7 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
                         height: MediaQuery.of(context).size.height * 0.10,
                       ),
                       monoVarifyText(),
-                      Text("${widget.otp}"),
+                      //Text("${widget.otp}"),
                       otpText(),
                       mobText(),
                       otpLayout(),
